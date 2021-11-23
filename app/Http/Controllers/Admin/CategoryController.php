@@ -84,6 +84,9 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
+        if (!$request->input('status')) {
+            $request->merge(['status' => 0]);
+        }
         $this->categoryService->update($id, $request->all());
         session()->flash('success', "Cập nhật thành công");
 

@@ -16,13 +16,11 @@
 @section('content')
     <h1 class="mt-4">Danh mục</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Danh mục
-
-        </li>
+        <li class="breadcrumb-item active">Danh mục</li>
     </ol>
     <div><a class="btn btn-success" href="{{ route('admin.category.create') }}">Tạo mới</a></div>
     <div class="container">
-        <table class="table table-hover">
+        <table id="table_id" class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -42,7 +40,7 @@
                         <td>
                             <a href="{{ route('admin.category.changeStatus', $category->id) }}"
                                 class="btn {{ $category->status ? 'btn-success' : 'btn-warning' }} rounded-pill status">
-                                {{ $category->status ? 'Active' : 'Inactive' }}
+                                {{ $category->status ? 'Active' : 'Disable' }}
                             </a>
                         </td>
                         <td>{{ $category->created_at->format('d-m-Y') }}</td>
@@ -57,6 +55,7 @@
 
             </tbody>
         </table>
+        <div>{{ $categoryList->links() }}</div>
     </div>
     <form action="" method="post">
         @csrf
@@ -85,6 +84,11 @@
 
             });
 
+            // Datatables
+            $('#table_id').DataTable({
+                paging: false,
+                info: false
+                });
 
             $('.status').click(function(e) {
                 e.preventDefault();
@@ -101,7 +105,7 @@
                         $(_this).toggleClass('btn-success btn-warning')
                         $(_this).hasClass('btn-success') ?
                             $(_this).text('Active') :
-                            $(_this).text('InActive')
+                            $(_this).text('Disable')
 
 
                     },

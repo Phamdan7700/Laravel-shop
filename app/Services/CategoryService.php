@@ -13,7 +13,7 @@ class CategoryService
     /* Get all */
     public function getAll()
     {
-        return Category::all();
+        return Category::paginate();
     }
     /* Find by id */
     public function findById($id)

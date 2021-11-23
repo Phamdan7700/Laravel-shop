@@ -19,6 +19,7 @@ class OrderDetailFactory extends Factory
             'product_id' => Product::all()->random()->id,
             'amount' => $this->faker->randomDigit(),
             'order_id' => Order::all()->random()->id,
+            'price' => $this->faker->numberBetween(1000, 20000),
         ];
     }
 }

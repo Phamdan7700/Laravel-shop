@@ -4,7 +4,8 @@
 @section('content')
     <h1 class="mt-4">Sản phẩm</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Sản phẩm</li>
+        <li class="breadcrumb-item "><a href="{{ route('admin.product.index') }}">Sản phẩm</a></li>
+        <li class="breadcrumb-item active">Tạo mới</li>
     </ol>
     <div class="container">
         <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data">
@@ -38,16 +39,25 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="img_list" class="form-label">Hình ảnh</label>
-                            <input type="file" name="img_list" value="{{ old('img_list') }}" class="form-control" multiple>
+                            <div class="input-group">
+                                <a id="" data-input="img_list" data-preview="img_list_preview" class="btn btn-primary lfm">
+                                    <i class="fas fa-image"></i> Chọn tệp
+                                </a>
+                                <input type="text" name="img_list" id="img_list" value="{{ old('img_list') }}" class="form-control">
+                                @error('img_list')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                             @error('img_list')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
+                            <div id="img_list_preview" style="margin-top:15px"></div>
                         </div>
 
                         <div class="form-check form-switch mt-3">
                             <input class="form-check-input" type="checkbox" name="status" value="1"
                             checked role="switch" id="status">
-                            <label class="form-check-label" for="status">Active / Inactive</label>
+                            <label class="form-check-label" for="status">Disable/ Active </label>
                         </div>
 
                     </div>
@@ -87,13 +97,18 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="thumbnail" class="form-label" >Hình ảnh</label>
-                        <input type="file" name="thumbnail" value="{{ old('thumbnail') }}" class="form-control" accept="image/*">
+                    <label for="thumbnail" class="form-label" >Thumbnail</label>
+                    <div class="input-group mb-3">
+                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                            <i class="fas fa-image"></i> Chọn tệp
+                        </a>
+                        <input type="text" name="thumbnail" id="thumbnail" class="form-control">
                         @error('thumbnail')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div id="holder" style="margin-top:15px"></div>
+
                 </div>
             </div>
 
@@ -104,13 +119,5 @@
 @endsection
 
 @section('js')
-    <script>
-        $(document).ready(function () {
-            $('.price').on('input', function () {
-                let input_val = $(this).val();
-                $(this).val(input_val.toLocaleString());
 
-            });
-        });
-    </script>
 @endsection

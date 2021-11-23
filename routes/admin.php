@@ -13,9 +13,13 @@
 
 use App\Http\Controllers\Admin\AjaxController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SliderController;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -34,7 +38,23 @@ Route::prefix('admin')->group(function () {
 
         /* Product */
         Route::resource('/product', ProductController::class);
-        Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
         Route::post('ajax/product/change-status/{id}', [AjaxController::class, 'changeProductStatus'])->name('product.changeStatus');
+
+        /* Blog */
+        Route::resource('/blog', BlogController::class);
+        Route::post('ajax/blog/change-status/{id}', [AjaxController::class, 'changePostStatus'])->name('blog.changeStatus');
+
+        /* Slider */
+        Route::resource('/slider', SliderController::class);
+        Route::post('ajax/slider/change-status/{id}', [AjaxController::class, 'changeSliderStatus'])->name('slider.changeStatus');
+
+        /* Order */
+        Route::resource('/order', OrderController::class);
+        Route::post('ajax/order/change-status/{id}', [AjaxController::class, 'changeOrderStatus'])->name('order.changeStatus');
+
+
+        Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+        Route::get('/file-manager', [DashboardController::class, 'filemanager'])->name('filemanager');
     });
 });

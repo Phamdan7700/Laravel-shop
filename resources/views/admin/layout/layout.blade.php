@@ -14,8 +14,14 @@
     <link href="{{ asset('assets/fontawesome-5.15.4/css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('assets/DataTables/datatables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/DataTables/DataTables-1.11.3/css/dataTables.bootstrap5.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('assets/DataTables/DataTables-1.11.3/css/dataTables.bootstrap5.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/summernote-0.8.18-dist/summernote-lite.min.css') }}">
+    {{-- Favicon --}}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/favicon_io/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/favicon_io/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/favicon_io/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('assets/favicon_io/site.webmanifest') }}">
     @yield('css')
 </head>
 
@@ -123,11 +129,61 @@
     @endif
     <script>
         $(document).ready(function() {
+
+            // Define function to open filemanager window
+            var lfm = function(options, cb) {
+                var route_prefix = (options && options.prefix) ? options.prefix : '/laravel-filemanager';
+                window.open(route_prefix + '?type=' + options.type || 'file', 'FileManager',
+                    'width=900,height=600');
+                window.SetUrl = cb;
+            };
+
+            // Define LFM summernote button
+            var LFMButton = function(context) {
+                var ui = $.summernote.ui;
+                var button = ui.button({
+                    contents: '<i class="note-icon-picture"></i> ',
+                    tooltip: 'Insert image with filemanager',
+                    click: function() {
+
+                        lfm({
+                            type: 'image',
+                            prefix: '/laravel-filemanager'
+                        }, function(lfmItems, path) {
+                            lfmItems.forEach(function(lfmItem) {
+                                context.invoke('insertImage', lfmItem.url);
+                            });
+                        });
+
+                    }
+                });
+                return button.render();
+            };
+
+            // Initialize summernote with LFM button in the popover button group
+            // Please note that you can add this button to any other button group you'd like
             $('.summernote').summernote({
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'lfm', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']],
+                ],
+                buttons: {
+                    lfm: LFMButton
+                },
                 height: 200
-            });
+            })
+
+            $('#lfm, .lfm').filemanager('image', {prefix: '/laravel-filemanager'});
         });
     </script>
+     <script src="{{ asset('vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
+
     @yield('js')
 </body>
 

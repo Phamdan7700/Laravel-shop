@@ -15,12 +15,22 @@ return [
     [
         'title' => 'Blog Manager',
         'icon' => 'fa-newspaper',
-        'link' => 'admin.category.index'
+        'link' => 'admin.blog.index'
     ],
     [
         'title' => 'Slider Manager',
         'icon' => 'fa-images',
-        'link' => 'admin.category.index'
+        'link' => 'admin.slider.index'
+    ],
+    [
+        'title' => 'Order Manager',
+        'icon' => 'fa-shopping-cart',
+        'link' => 'admin.order.index'
+    ],
+    [
+        'title' => 'Laravel File Manager',
+        'icon' => 'fa-folder-open',
+        'link' => 'admin.filemanager'
     ]
 
 ];

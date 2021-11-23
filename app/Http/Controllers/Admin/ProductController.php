@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Services\CategoryService;
 use App\Services\ProductService;
-
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -48,8 +48,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\ProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
+        dd($request);
         if ($request->hasFile('thumbnail')) {
             $file = $request->file('thumbnail');
             $file_name = time() . '.' . $file->getClientOriginalExtension();
@@ -95,6 +96,9 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, $id)
     {
+        if (!$request->input('status')) {
+            $request->merge(['status' => 0]);
+        }
         $this->productService->update($id, $request->all());
         session()->flash('success', "Cập nhật thành công");
 

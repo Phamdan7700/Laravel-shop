@@ -34,4 +34,14 @@ class AjaxController extends Controller
             'status' => 200
         ]);
     }
+
+    /* Change Post Status */
+    function changePostStatus($id)
+    {
+        $this->ajaxService->changePostStatus($id);
+        return response()->json([
+            'message' => 'success',
+            'status' => 200
+        ]);
+    }
 }

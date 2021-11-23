@@ -16,7 +16,9 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->name(),
             'content' => $this->faker->text(),
+            'thumbnail' => $this->faker->text(),
             'view' => $this->faker->randomDigit(),
+            'status' => $this->faker->boolean(),
         ];
     }
 }

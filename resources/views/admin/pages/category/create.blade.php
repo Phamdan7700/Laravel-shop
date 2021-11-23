@@ -4,7 +4,8 @@
 @section('content')
     <h1 class="mt-4">Danh mục</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Danh mục</li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.category.index') }}">Danh mục</a></li>
+        <li class="breadcrumb-item active">Tạo mới</li>
     </ol>
     <div class="container">
         <form action="{{ route('admin.category.store') }}" method="POST">
@@ -19,7 +20,7 @@
                 @enderror
                 <div class="form-check form-switch mt-3">
                     <input class="form-check-input" type="checkbox" name="status" value="1" checked role="switch" id="status">
-                    <label class="form-check-label" for="status">Active / Inactive</label>
+                    <label class="form-check-label" for="status">Disable/ Active </label>
                 </div>
 
             </div>

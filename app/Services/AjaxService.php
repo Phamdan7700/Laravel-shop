@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\Product;
 
 /**
@@ -21,6 +22,13 @@ class AjaxService
     function changeProductStatus($id)
     {
         $item = Product::findOrFail($id);
+        $item->status = !boolval($item->status);
+        $item->save();
+    }
+
+    function changePostStatus($id)
+    {
+        $item = Post::findOrFail($id);
         $item->status = !boolval($item->status);
         $item->save();
     }

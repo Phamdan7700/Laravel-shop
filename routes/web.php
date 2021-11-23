@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Admin;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('admin.auth.register');
-// });
+Route::get('/', function () {
+    return redirect()->route('admin.getLogin');
+});
+
+
+/* File manager */
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => 'auth:admin'], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});

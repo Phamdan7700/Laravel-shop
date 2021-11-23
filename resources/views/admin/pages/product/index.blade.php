@@ -21,7 +21,7 @@
 @section('content')
     <h1 class="mt-4">Sản phẩm</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-product active">Sản phẩm
+        <li class="breadcrumb-item active">Sản phẩm
 
         </li>
     </ol>
@@ -46,7 +46,7 @@
                     <tr class="align-middle product">
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td class="name">{{ $product->name }}</td>
-                        <td class="name">{{ $product->category->title }}</td>
+                        <td >{{ $product->category->title }}</td>
                         <td class="text-nowrap">{{ number_format($product->price) }} đ</td>
                         <td class="text-nowrap">{{ number_format($product->price_sale) }} đ</td>
                         <td>
@@ -57,7 +57,7 @@
                         <td>
                             <a href="{{ route('admin.product.changeStatus', $product->id) }}"
                                 class="btn {{ $product->status ? 'btn-success' : 'btn-warning' }} rounded-pill status">
-                                {{ $product->status ? 'Active' : 'Inactive' }}
+                                {{ $product->status ? 'Active' : 'Disable' }}
                             </a>
                         </td>
                         <td>{{ $product->count_in_sock }}</td>
@@ -141,7 +141,7 @@
                         $(_this).toggleClass('btn-success btn-warning')
                         $(_this).hasClass('btn-success') ?
                             $(_this).text('Active') :
-                            $(_this).text('InActive')
+                            $(_this).text('Disable')
 
 
                     },
