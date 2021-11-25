@@ -16,7 +16,10 @@ class OrderFactory extends Factory
     {
         return [
             'user_id' => User::all()->random()->id,
+            'receiver' => $this->faker->name(),
             'address' => $this->faker->address(),
+            'phone' => $this->faker->phoneNumber(),
+            'total_price' => $this->faker->numberBetween(10000, 20000),
         ];
     }
 }

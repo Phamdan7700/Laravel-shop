@@ -15,22 +15,32 @@ class ProductService
     {
         return Product::paginate();
     }
+
+    /* Get active */
+    public function getActive()
+    {
+        return Product::active()->paginate(12);
+    }
+
     /* Find by id */
     public function findById($id)
     {
         return Product::findOrFail($id);
     }
+
     /* Create */
     public function store(array $attr)
     {
         Product::create($attr);
     }
+
     /* Update */
     public function update($id, array $attr)
     {
         $product = $this->findById($id);
         $product->update($attr);
     }
+
     /* Delete */
     public function destroy($id)
     {

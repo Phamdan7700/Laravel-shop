@@ -25,8 +25,9 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'manufacturer' => 'required|string|max:255',
             'price' => 'required|numeric|digits_between:0,10',
-            'price_sale' => 'required|numeric|lt:price',
+            'price_sale' => 'numeric|lt:price',
             'content' => 'string|nullable',
             'detail' => 'string|nullable',
             'img_list' => 'string|nullable',

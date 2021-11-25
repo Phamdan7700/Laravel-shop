@@ -17,6 +17,7 @@
             max-width: max-content;
         }
 
+
     </style>
 @endsection
 @section('content')
@@ -42,7 +43,7 @@
                             <img src="{{ asset($slider->img) }}" class="img-thumbnail thumbnail" alt="thumbnail"
                                 type="button" data-bs-toggle="modal" data-bs-target="#thumbnail">
                         </td>
-                        <td>{{ $slider->postion }}</td>
+                        <td>{{ $slider->position }}</td>
                         <td class="text-nowrap">
                             <a href="{{ route('admin.slider.edit', $slider->id) }}" class="edit btn btn-primary "><i
                                     class="fas fa-edit"></i></a>
@@ -54,35 +55,30 @@
 
             </tbody>
         </table>
-        <div>{{ $sliderList->links() }}</div>
-
         {{--  --}}
         <h5>Demo</h5>
         @if (!$sliderList->isEmpty())
-            <div id="carouselExampleIndicators" class="carousel slide carousel-dark w-25" data-bs-ride="carousel">
+            <div id="slider" class="carousel slide carousel-dark" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     @foreach ($sliderList as $slider)
-                        <button type="button" data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : null }}"
-                            aria-current="true" aria-label="Slide {{ $loop->iteration }}"></button>
+                        <button type="button" data-bs-target="#slider" data-bs-slide-to="{{ $loop->index }}"
+                            class="{{ $loop->first ? 'active' : null }}" aria-current="true"
+                            aria-label="Slide {{ $loop->iteration }}"></button>
                     @endforeach
                 </div>
                 <div class="carousel-inner">
                     @foreach ($sliderList as $slider)
                         <div class="carousel-item {{ $loop->first ? 'active' : null }}">
-                            <img src="{{ asset($slider->img ?? 'uploads/thumbnail.jpg') }}" class="d-block w-100"
-                                alt="slider">
+                            <img src="{{ asset($slider->img ?? 'uploads/thumbnail.jpg') }}" alt="slider">
                         </div>
                     @endforeach
 
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#slider" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#slider" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>

@@ -28,17 +28,17 @@
     <div><a class="btn btn-success" href="{{ route('admin.product.create') }}">Tạo mới</a></div>
     <div class="container mt-2">
         <table id="table_id" class="display table table-hover table-striped ">
-            <thead>
-                <th scope="col">#</th>
-                <th scope="col">Tên sản phẩm</th>
-                <th scope="col">Danh mục</th>
-                <th scope="col">Giá</th>
-                <th scope="col">Khuyến mãi</th>
-                <th scope="col">Hình ảnh</th>
-                <th scope="col">Trạng thái</th>
-                <th scope="col">Tồn kho</th>
-                <th scope="col">Hành động</th>
-
+            <thead class="sticky top-14">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Hình ảnh</th>
+                    <th scope="col">Danh mục</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Khuyến mãi</th>
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col">Tồn kho</th>
+                    <th scope="col">Hành động</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,14 +46,15 @@
                     <tr class="align-middle product">
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td class="name">{{ $product->name }}</td>
-                        <td >{{ $product->category->title }}</td>
-                        <td class="text-nowrap">{{ number_format($product->price) }} đ</td>
-                        <td class="text-nowrap">{{ number_format($product->price_sale) }} đ</td>
                         <td>
-                            <img src="{{ asset('uploads/' . ($product->thumbnail ?? 'thumbnail.jpg')) }}"
+                            <img src="{{ $product->thumbnail }}"
                                 class="img-thumbnail thumbnail" alt="thumbnail" type="button" data-bs-toggle="modal"
                                 data-bs-target="#thumbnail">
                         </td>
+                        <td>{{ $product->category->title }}</td>
+                        <td class="text-nowrap">{{ number_format($product->price) }} đ</td>
+                        <td class="text-nowrap">{{ number_format($product->price_sale) }} đ</td>
+
                         <td>
                             <a href="{{ route('admin.product.changeStatus', $product->id) }}"
                                 class="btn {{ $product->status ? 'btn-success' : 'btn-warning' }} rounded-pill status">
@@ -122,7 +123,26 @@
             // Datatables
             $('#table_id').DataTable({
                 paging: false,
-                info: false
+                info: false,
+                "columnDefs": [{
+                    "type": "formatted-num",
+                    targets: [3, 4]
+                }]
+            });
+            // Format number sort
+            jQuery.extend(jQuery.fn.dataTableExt.oSort, {
+                "formatted-num-pre": function(a) {
+                    a = (a === "-" || a === "") ? 0 : a.replace(/[^\d\-\.]/g, "");
+                    return parseFloat(a);
+                },
+
+                "formatted-num-asc": function(a, b) {
+                    return a - b;
+                },
+
+                "formatted-num-desc": function(a, b) {
+                    return b - a;
+                }
             });
 
             /* Change status */

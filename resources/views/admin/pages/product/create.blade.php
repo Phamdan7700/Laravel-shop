@@ -16,8 +16,15 @@
                     <div class="mb-3">
                         <div class="form-group mb-3">
                             <label for="name" class="form-label">Tên sản phẩm</label>
-                            <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Nhập tên sản phẩm, ví dụ: Samsung S20">
+                            <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Ví dụ: Samsung S20">
                             @error('name')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="manufacturer" class="form-label">Hãng sản xuất</label>
+                            <input type="text" name="manufacturer" value="{{ old('manufacturer') }}" class="form-control" placeholder="Ví dụ: Samsung ">
+                            @error('namanufacturerme')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -84,16 +91,23 @@
                     <div class="input-group mb-3">
                         <input type="number" name="price" value="{{ old('price') }}" class="price form-control" placeholder="Ví dụ: 100.000" aria-describedby="price">
                         <span class="input-group-text" id="price">đ</span>
-                        @error('price')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
                     </div>
+                    @error('price')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
 
                     <label for="price_sale" class="form-label" >Giá khuyến mãi</label>
                     <div class="input-group mb-3">
-                        <input type="number" name="price_sale" value="{{ old('price_sale') }}" class="price form-control" placeholder="Ví dụ: 100.000" aria-describedby="price_sale">
+                        <input type="number" name="price_sale" value="{{ old('price_sale')?? 0 }}" class="price form-control" placeholder="Ví dụ: 100.000" aria-describedby="price_sale">
                         <span class="input-group-text" id="price_sale">đ</span>
-                        @error('price_sale')
+                    </div>
+                    @error('price_sale')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                    <label for="count_in_sock" class="form-label" >Tồn kho</label>
+                    <div class="form-group mb-3">
+                        <input type="number" name="count_in_sock" value="{{ old('count_in_sock')?? 0 }}" class="price form-control" placeholder="Ví dụ: 100.000" aria-describedby="count_in_sock">
+                        @error('count_in_sock')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>

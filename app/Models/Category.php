@@ -15,4 +15,9 @@ class Category extends Model
     {
         return $this->hasMany(Product::class, 'category_id');
     }
+
+    public function scopeActive($query)
+    {
+        $query->where('status', 1);
+    }
 }

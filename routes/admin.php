@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Models\Admin;
@@ -46,12 +47,9 @@ Route::prefix('admin')->group(function () {
 
         /* Slider */
         Route::resource('/slider', SliderController::class);
-        Route::post('ajax/slider/change-status/{id}', [AjaxController::class, 'changeSliderStatus'])->name('slider.changeStatus');
 
         /* Order */
         Route::resource('/order', OrderController::class);
-        Route::post('ajax/order/change-status/{id}', [AjaxController::class, 'changeOrderStatus'])->name('order.changeStatus');
-
 
         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 

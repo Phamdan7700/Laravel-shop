@@ -15,6 +15,11 @@ class CategoryService
     {
         return Category::paginate();
     }
+    /* Get active */
+    public function getActive()
+    {
+        return Category::active()->get();
+    }
     /* Find by id */
     public function findById($id)
     {

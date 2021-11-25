@@ -16,13 +16,17 @@ class ProductFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'manufacturer' => $this->faker->name,
             'price' => $this->faker->numberBetween(50000, 1000000),
             'price_sale' => $this->faker->numberBetween(50000, 1000000),
-            'content' => $this->faker->text(),
-            'detail' => $this->faker->text(),
-            'thumbnail' => $this->faker->image(),
-            'img_list' => $this->faker->text(),
+            'status' => $this->faker->boolean(),
+            'content' => $this->faker->randomHtml(4, 10),
+            'detail' => $this->faker->randomHtml(),
+            'thumbnail' => $this->faker->imageUrl(),
+            'img_list' => $this->faker->imageUrl(),
             'count_in_sock' => $this->faker->randomDigit(),
+            'rate' => $this->faker->randomDigit(),
+            'count' => $this->faker->randomDigit(),
             'category_id' => Category::all()->random()->id
         ];
     }

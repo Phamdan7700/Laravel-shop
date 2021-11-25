@@ -15,6 +15,6 @@ class OrderDetailSeeder extends Seeder
      */
     public function run()
     {
-        OrderDetail::factory(20)->create();
+        OrderDetail::factory(5)->create();
     }
 }

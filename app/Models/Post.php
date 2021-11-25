@@ -16,4 +16,9 @@ class Post extends Model
         'view',
         'status'
     ];
+
+    public function scopeActive($query)
+    {
+        $query->where('status', 1);
+    }
 }

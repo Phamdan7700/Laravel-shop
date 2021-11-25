@@ -9,7 +9,7 @@ return [
     ],
     [
         'title' => 'Product Manager',
-        'icon' => 'fa-shopping-cart',
+        'icon' => 'fa-shopping-basket',
         'link' => 'admin.product.index'
     ],
     [
@@ -24,11 +24,11 @@ return [
     ],
     [
         'title' => 'Order Manager',
-        'icon' => 'fa-shopping-cart',
+        'icon' => 'fa-tasks',
         'link' => 'admin.order.index'
     ],
     [
-        'title' => 'Laravel File Manager',
+        'title' => 'File Manager',
         'icon' => 'fa-folder-open',
         'link' => 'admin.filemanager'
     ]

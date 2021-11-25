@@ -16,8 +16,11 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
+            $table->string('receiver');
             $table->string('address');
+            $table->string('phone');
             $table->integer('status')->default(0);
+            $table->integer('total_price');
             $table->timestamps();
         });
     }

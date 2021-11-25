@@ -2,44 +2,40 @@
 
 namespace App\Services;
 
-use App\Models\Post;
+use App\Models\Order;
 
 /**
- * Class BlogService
+ * Class OrderService
  * @package App\Services
  */
-class BlogService
+class OrderService
 {
     /* Get all */
     public function getAll()
     {
-        return Post::paginate();
-    }
-    /* Get active */
-    public function getActive()
-    {
-        return Post::active()->paginate();
+        return Order::paginate();
     }
     /* Find by id */
     public function findById($id)
     {
-        return Post::findOrFail($id);
+        return Order::findOrFail($id);
     }
     /* Create */
     public function store(array $attr)
     {
-        Post::create($attr);
+        Order::create($attr);
     }
     /* Update */
     public function update($id, array $attr)
     {
-        $post = $this->findById($id);
-        $post->update($attr);
+        $order = $this->findById($id);
+        $order->update($attr);
     }
     /* Delete */
     public function destroy($id)
     {
-        $post = $this->findById($id);
-        $post->delete();
+        $order = $this->findById($id);
+        $order->details()->delete();
+        $order->delete();
     }
 }

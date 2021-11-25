@@ -13,7 +13,7 @@ class SliderService
     /* Get all */
     public function getAll()
     {
-        return Slider::paginate();
+        return Slider::orderBy('position')->get();
     }
     /* Find by id */
     public function findById($id)
@@ -23,6 +23,9 @@ class SliderService
     /* Create */
     public function store(array $attr)
     {
+        $postion =  0;
+        $postion = ($slider = Slider::orderByDesc('position')->first()) ? ($slider->position + 1) : $postion;
+        $attr = array_merge($attr, ['position' => $postion]);
         Slider::create($attr);
     }
     /* Update */

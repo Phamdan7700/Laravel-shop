@@ -48,16 +48,15 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\ProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        dd($request);
+        $attr = $request->all();
         if ($request->hasFile('thumbnail')) {
             $file = $request->file('thumbnail');
             $file_name = time() . '.' . $file->getClientOriginalExtension();
             $file->move('uploads', $file_name);
+            $attr['thumbnail'] = $file_name;
         }
-        $attr = $request->all();
-        $attr['thumbnail'] = $file_name;
         $this->productService->store($attr);
         session()->flash('success', "Tạo mới sản phẩm thành công");
         return redirect()->route('admin.product.index');

@@ -18,8 +18,16 @@
                     <div class="mb-3">
                         <div class="form-group mb-3">
                             <label for="name" class="form-label">Tên sản phẩm</label>
-                            <input type="text" name="name" value="{{ $product->name }}" class="form-control" placeholder="Nhập tên sản phẩm, ví dụ: Samsung S20">
+                            <input type="text" name="name" value="{{ $product->name }}" class="form-control" placeholder="Ví dụ: Samsung S20">
                             @error('name')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="manufacturer" class="form-label">Hãng sản xuất</label>
+                            <input type="text" name="manufacturer" value="{{ $product->manufacturer }}" class="form-control" placeholder="Ví dụ: Samsung ">
+                            @error('namanufacturerme')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -92,12 +100,20 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
 
+                    <label for="count_in_sock" class="form-label" >Tồn kho</label>
+                    <div class="form-group mb-3">
+                        <input type="number" name="count_in_sock" value="{{ $product->count_in_sock}}" class="price form-control" placeholder="Ví dụ: 100.000" aria-describedby="count_in_sock">
+                        @error('count_in_sock')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
                     <label for="thumbnail" class="form-label" >Hình ảnh</label>
                     <div class="input-group mb-3">
                         <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
                             <i class="fas fa-image"></i> Choose
                         </a>
-                        <input type="text" name="thumbnail" id="thumbnail" value="{{ old('thumbnail') }}" disabled class="form-control" accept="image/*">
+                        <input type="text" name="thumbnail" id="thumbnail" value="{{ $product->thumbnail }}" class="form-control" accept="image/*">
                         @error('thumbnail')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror

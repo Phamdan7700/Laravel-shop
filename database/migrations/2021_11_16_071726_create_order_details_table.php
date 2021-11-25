@@ -18,7 +18,7 @@ class CreateOrderDetailsTable extends Migration
             $table->foreignId('product_id')->constrained('products');
             $table->unsignedInteger('amount');
             $table->foreignId('order_id')->constrained('orders');
-            $table->string('price');
+            $table->string('total_price');
             $table->timestamps();
         });
     }

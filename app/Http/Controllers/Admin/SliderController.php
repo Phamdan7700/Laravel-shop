@@ -46,13 +46,11 @@ class SliderController extends Controller
      */
     public function store(SliderRequest $request)
     {
-        $postion =  0;
-        ($slider = Slider::orderByDesc('position')->first()) ? ($slider->position + 1) : $postion;
-        $request->merge(['position' => $postion]);
+
         $this->sliderService->store([
             'img' => $request->thumbnail,
-            'postion' => $postion
         ]);
+
         session()->flash('success', "Tạo mới thành công");
         return redirect()->route('admin.slider.index');
     }
@@ -90,7 +88,10 @@ class SliderController extends Controller
     public function update(SliderRequest $request, $id)
     {
 
-        $this->sliderService->update($id, $request->all());
+        $this->sliderService->update($id, [
+            'img' => $request->thumbnail,
+            'position' => $request->position
+        ]);
         session()->flash('success', "Cập nhật thành công");
 
         return redirect()->route('admin.slider.index');

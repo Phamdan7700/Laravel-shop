@@ -17,6 +17,14 @@
             max-width: max-content;
         }
 
+        .content-col {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            line-height: 1.5;
+        }
+
     </style>
 @endsection
 @section('content')
@@ -27,11 +35,11 @@
     <div><a class="btn btn-success" href="{{ route('admin.blog.create') }}">Tạo mới</a></div>
     <div class="container mt-2">
         <table id="table_id" class="display table table-hover table-striped ">
-            <thead>
+            <thead class="sticky top-14">
                 <th scope="col" class="text-nowrap">#</th>
                 <th scope="col" class="text-nowrap">Tiêu đề</th>
-                <th scope="col" class="text-nowrap">Nội dung</th>
                 <th scope="col" class="text-nowrap">Thumbnail</th>
+                <th scope="col" class="text-nowrap">Nội dung</th>
                 <th scope="col" class="text-nowrap">Status</th>
                 <th scope="col" class="text-nowrap">Lượt xem</th>
                 <th scope="col" class="text-nowrap">Hành động</th>
@@ -42,12 +50,13 @@
                     <tr class="align-middle">
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td class="name">{{ $blog->title }}</td>
-                        <td>{!! $blog->content !!}</td>
                         <td>
                             <img src="{{ asset($blog->thumbnail ?? 'uploads/thumbnail.jpg') }}"
                                 class="img-thumbnail thumbnail" alt="thumbnail" type="button" data-bs-toggle="modal"
                                 data-bs-target="#thumbnail">
                         </td>
+                        <td class="content-col">{!! $blog->content !!}</td>
+
                         <td>
                             <a href="{{ route('admin.blog.changeStatus', $blog->id) }}"
                                 class="btn {{ $blog->status ? 'btn-success' : 'btn-warning' }} rounded-pill status">
