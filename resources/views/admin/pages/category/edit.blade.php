@@ -20,6 +20,22 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                <div class="form-group">
+                    <label for="slug" class="form-label">Slug</label>
+                    <input type="text" name="slug" value="{{ $category->slug }}" class="form-control" id="slug"
+                        aria-describedby="slug">
+                    @error('slug')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="title" class="form-label">Thứ tự</label>
+                    <input type="number" name="position" value="{{ $category->position }}" class="form-control" id="position"
+                        aria-describedby="position">
+                    @error('position')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
                 <div class="form-check form-switch mt-3">
                     <input class="form-check-input" type="checkbox" name="status" value="1"
                         {{ $category->status ? 'checked' : null }} role="switch" id="status">

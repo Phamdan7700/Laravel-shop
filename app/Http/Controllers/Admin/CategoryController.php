@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Services\CategoryService;
-use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
+use function GuzzleHttp\Promise\all;
 
 class CategoryController extends Controller
 {
@@ -47,6 +48,8 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
+        $request->merge(['slug' => Str::slug($request->title)]);
+        // dd($request->all());
         $this->categoryService->store($request->all());
         session()->flash('success', "Tạo mới thành công");
         return redirect()->route('admin.category.index');

@@ -33,7 +33,11 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $remember)) {
 
-            return response()->json(Auth::user());
+            return response()->json([
+                'user' => Auth::user(),
+                'success' => true,
+                'message' => 'Đăng nhập thành công'
+            ]);
         }
 
         return response()->json([

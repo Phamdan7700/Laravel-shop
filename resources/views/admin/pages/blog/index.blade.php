@@ -39,7 +39,6 @@
                 <th scope="col" class="text-nowrap">#</th>
                 <th scope="col" class="text-nowrap">Tiêu đề</th>
                 <th scope="col" class="text-nowrap">Thumbnail</th>
-                <th scope="col" class="text-nowrap">Nội dung</th>
                 <th scope="col" class="text-nowrap">Status</th>
                 <th scope="col" class="text-nowrap">Lượt xem</th>
                 <th scope="col" class="text-nowrap">Hành động</th>
@@ -55,7 +54,6 @@
                                 class="img-thumbnail thumbnail" alt="thumbnail" type="button" data-bs-toggle="modal"
                                 data-bs-target="#thumbnail">
                         </td>
-                        <td class="content-col">{!! $blog->content !!}</td>
 
                         <td>
                             <a href="{{ route('admin.blog.changeStatus', $blog->id) }}"

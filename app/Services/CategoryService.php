@@ -13,7 +13,7 @@ class CategoryService
     /* Get all */
     public function getAll()
     {
-        return Category::paginate();
+        return Category::orderBy('position')->paginate();
     }
     /* Get active */
     public function getActive()
@@ -24,6 +24,11 @@ class CategoryService
     public function findById($id)
     {
         return Category::findOrFail($id);
+    }
+    /* Find by slug */
+    public function findBySlug($slug)
+    {
+        return Category::where('slug', $slug)->firstOrFail();
     }
     /* Create */
     public function store(array $attr)

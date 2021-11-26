@@ -27,6 +27,7 @@
                     <th scope="col">Danh mục</th>
                     <th scope="col">Tổng sản phẩm</th>
                     <th scope="col">Trạng thái</th>
+                    <th scope="col">Thứ tự</th>
                     <th scope="col">Ngày tạo</th>
                     <th scope="col">Hành động</th>
                 </tr>
@@ -43,6 +44,7 @@
                                 {{ $category->status ? 'Active' : 'Disable' }}
                             </a>
                         </td>
+                        <td>{{ $category->position }}</td>
                         <td>{{ $category->created_at->format('d-m-Y') }}</td>
                         <td>
                             <a href="{{ route('admin.category.edit', $category->id) }}" class="edit btn btn-primary"><i

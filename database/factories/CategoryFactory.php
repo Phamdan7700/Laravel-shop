@@ -14,8 +14,10 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->name(),
-            'status' => $this->faker->boolean()
+            'title' => $this->faker->unique()->randomElement(['Laptop', 'Điện thoại', 'Phụ kiện']),
+            'slug' => $this->faker->slug(),
+            'status' => $this->faker->boolean(),
+            'position' => $this->faker->randomDigit(),
         ];
     }
 }

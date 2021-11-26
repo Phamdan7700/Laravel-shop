@@ -17,7 +17,7 @@ class CategoryResource extends JsonResource
         return [
             "id" => $this->id,
             "title" => $this->title,
-            'products' => ProductResource::collection($this->products)
+            'products' => ProductResource::collection($this->products),
         ];
     }
 }

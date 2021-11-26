@@ -18,7 +18,7 @@ class PostResource extends JsonResource
             "id" => $this->id,
             "title" => $this->title,
             "content" => $this->content,
-            "thumbnail" => $this->thumbnail,
+            "thumbnail" => asset($this->thumbnail),
             "view" => $this->view,
             "created_at" => $this->created_at->format('d-m-Y'),
             "updated_at" => $this->updated_at->format('d-m-Y')
