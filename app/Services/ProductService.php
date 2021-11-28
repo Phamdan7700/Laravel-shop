@@ -19,7 +19,7 @@ class ProductService
     /* Get active */
     public function getActive()
     {
-        return Product::active()->paginate(12);
+        return Product::active()->orderBy('price')->paginate(12);
     }
 
     /* Find by id */

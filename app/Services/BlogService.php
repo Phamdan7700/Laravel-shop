@@ -16,9 +16,9 @@ class BlogService
         return Post::paginate();
     }
     /* Get active */
-    public function getActive()
+    public function getActive($limit = 15)
     {
-        return Post::active()->paginate();
+        return Post::active()->paginate($limit);
     }
     /* Find by id */
     public function findById($id)

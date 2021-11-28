@@ -24,7 +24,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $postList =  $this->blogService->getActive();
+        $postList =  $this->blogService->getActive(10);
         return PostResource::collection($postList);
     }
 

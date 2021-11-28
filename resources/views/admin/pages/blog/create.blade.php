@@ -19,6 +19,14 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                <div class="form-group mb-3">
+                    <label for="summary" class="form-label">Tóm tắt</label>
+                    <input type="text" name="summary" value="{{ old('summary') }}" class="form-control" id="summary"
+                        aria-describedby="summary">
+                    @error('summary')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
 
                 <div class="form-group mb-3">
                     <label for="content" class="form-label">Nội dung</label>

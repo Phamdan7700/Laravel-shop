@@ -47,7 +47,7 @@ class ProductController extends Controller
     public function productsByCategory($slug)
     {
         $category = $this->categoryService->findBySlug($slug);
-        $products = $category->products()->paginate();
+        $products = $category->products()->paginate(16);
         return ProductResource::collection($products);
     }
 }
