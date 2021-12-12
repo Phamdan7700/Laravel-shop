@@ -48,29 +48,15 @@ class BlogController extends Controller
     public function show($id)
     {
         $post =  $this->blogService->findById($id);
+        $post->update([
+            'view' => $post->view + 1
+        ]);
         return new PostResource($post);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function getRelativePost($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $post =  $this->blogService->getRelativePost($id);
+        return PostResource::collection($post);
     }
 }

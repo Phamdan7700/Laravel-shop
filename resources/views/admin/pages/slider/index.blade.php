@@ -13,8 +13,11 @@
         }
 
         .img-thumbnail {
-            max-height: 50px;
-            max-width: max-content;
+            max-width: 200px;
+        }
+
+        .modal-dialog {
+            max-width: 80vw;
         }
 
 
@@ -40,8 +43,8 @@
                     <tr class="align-middle">
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>
-                            <img src="{{ asset($slider->img) }}" class="img-thumbnail thumbnail" alt="thumbnail"
-                                type="button" data-bs-toggle="modal" data-bs-target="#thumbnail">
+                            <div><img src="{{ asset($slider->img) }}" class="img-thumbnail thumbnail" alt="thumbnail"
+                                type="button" data-bs-toggle="modal" data-bs-target="#thumbnail"></div>
                         </td>
                         <td>{{ $slider->position }}</td>
                         <td class="text-nowrap">

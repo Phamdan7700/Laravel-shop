@@ -31,21 +31,37 @@ class ProductFactory extends Factory
         ];
 
         $thumbnailPhone = '/uploads/photos/1/Product/Smartphone/iphone-12-pro-max-xanh-duong-new-600x600-600x600.jpg,/uploads/photos/1/Product/Smartphone/iphone-12-pro-vang-dong-new-600x600-1-600x600.jpg,/uploads/photos/1/Product/Smartphone/iphone-13-mini-blue-2-600x600.jpg,/uploads/photos/1/Product/Smartphone/iphone-13-starlight-1-600x600 (1).jpg,/uploads/photos/1/Product/Smartphone/iphone-13-starlight-1-600x600.jpg,/uploads/photos/1/Product/Smartphone/iphone-xi-do-600x600.jpg,/uploads/photos/1/Product/Smartphone/oppo-a55-4g-blue-600x600.jpg,/uploads/photos/1/Product/Smartphone/oppo-reno6-pro-blue-1-600x600 (1).jpg,/uploads/photos/1/Product/Smartphone/oppo-reno6-5g-aurora-600x600.jpg,/uploads/photos/1/Product/Smartphone/oppo-reno5-marvel-thumb-600x600-600x600.jpg,/uploads/photos/1/Product/Smartphone/oppo-find-x3-pro-black-001-1-600x600.jpg,/uploads/photos/1/Product/Smartphone/oppo-a95-4g-bac-2-600x600.jpg,/uploads/photos/1/Product/Smartphone/oppo-a94-black-thumb-600x600-1-600x600.jpg,/uploads/photos/1/Product/Smartphone/oppo-a74-5g-silver-01-600x600.jpg,/uploads/photos/1/Product/Smartphone/oppo-reno6-pro-blue-1-600x600.jpg,/uploads/photos/1/Product/Smartphone/oppo-reno6-z-5g-aurora-1-600x600.jpg,/uploads/photos/1/Product/Smartphone/realme-6-pro-do-600x600.jpg,/uploads/photos/1/Product/Smartphone/realme-6i-trang-new-600x600-600x600.jpg,/uploads/photos/1/Product/Smartphone/realme-7-white-600x600.jpg,/uploads/photos/1/Product/Smartphone/realme-7i-xanhduong-new-600x600.jpg,/uploads/photos/1/Product/Smartphone/realme-8-pro-balck-600x600.jpg,/uploads/photos/1/Product/Smartphone/samsung-galaxy-s21-tim-600x600.jpg,/uploads/photos/1/Product/Smartphone/samsung-galaxy-a52s-5g-violet-600x600.jpg,/uploads/photos/1/Product/Smartphone/samsung-galaxy-a52s-5g-violet-600x600 (1).jpg,/uploads/photos/1/Product/Smartphone/samsung-galaxy-a52s-5g-mint-600x600.jpg,/uploads/photos/1/Product/Smartphone/samsung-galaxy-a52s-5g-mint-600x600 (1).jpg,/uploads/photos/1/Product/Smartphone/realme-8-silver-600x600.jpg,/uploads/photos/1/Product/Smartphone/realme-8-pro-vang-600x600.jpg,/uploads/photos/1/Product/Smartphone/samsung-galaxy-z-flip-3-violet-1-600x600 (1).jpg,/uploads/photos/1/Product/Smartphone/samsung-galaxy-z-flip-3-violet-1-600x600.jpg/uploads/photos/1/Product/Smartphone/samsung-galaxy-z-fold-3-green-1-600x600 (1).jpg,/uploads/photos/1/Product/Smartphone/samsung-galaxy-z-fold-3-green-1-600x600.jpg,/uploads/photos/1/Product/Smartphone/Vivo-V23e-1-2-600x600.jpg,/uploads/photos/1/Product/Smartphone/vivo-x70-pro-xanh-hong-1-600x600 (1).jpg,/uploads/photos/1/Product/Smartphone/vivo-x70-pro-xanh-hong-1-600x600.jpg,/uploads/photos/1/Product/Smartphone/xiaomi-11-lite-5g-ne-pink-600x600.jpg';
-        $accessories = [];
+        $accessories = [
+            'Tai nghe Có Dây Chụp Tai Mozard IP-892',
+            'Tai nghe Có Dây Chụp Tai Kanen IP-500',
+            'Tai nghe Có Dây Chụp Tai Mozard IP-236',
+            'Tai nghe Có Dây Chụp Tai Kanen IP-520',
+            'Tai nghe Bluetooth True Wireless Kanen Q55',
+            'Tai nghe Bluetooth True Wireless Mozard Q10',
+            'Tai nghe Bluetooth True Wireless iCutes Q20',
+            'Tai nghe Bluetooth True Wireless Mozard Q5',
+            'Tai nghe Bluetooth True Wireless iCutes Q6',
+            'Tai nghe Bluetooth True Wireless Mozard AT18',
+            'Loa Bluetooth iCutes E8',
+            'Loa Bluetooth Mozard E5 Plus',
+            'Loa Bluetooth Mozard E9',
+            'Loa Bluetooth iCutes MB-M916',
+        ];
+        $thumbnailPK = '/uploads/photos/1/Product/PhuKien/airpods-pro-wireless-charge-apple-mwp22-ava-600x600 (1).jpg,/uploads/photos/1/Product/PhuKien/airpods-pro-wireless-charge-apple-mwp22-ava-600x600.jpg,/uploads/photos/1/Product/PhuKien/bluetooth-airpods-2-apple-mv7n2-imei-ava-600x600.jpg,/uploads/photos/1/Product/PhuKien/bluetooth-sony-srs-xb13-avatar-600x600 (1).jpg,/uploads/photos/1/Product/PhuKien/bluetooth-sony-srs-xb13-avatar-600x600.jpg,/uploads/photos/1/Product/PhuKien/loa-bluetooth-mozard-e8-600x600.jpg,/uploads/photos/1/Product/PhuKien/loa-bluetooth-icutes-mb-m916-cu-den-add-600x600.jpg,/uploads/photos/1/Product/PhuKien/bluetooth-true-wireless-hydrus-ts12bc-thumb-600x600.jpg,/uploads/photos/1/Product/PhuKien/bluetooth-true-wireless-galaxy-buds-pro-bac-ava-600x600.jpg,/uploads/photos/1/Product/PhuKien/bluetooth-true-wireless-galaxy-buds-pro-bac-ava-600x600 (1).jpg,/uploads/photos/1/Product/PhuKien/loa-bluetooth-mozard-y550-plus-600x600.jpg,/uploads/photos/1/Product/PhuKien/sac-du-phong-10000mah-khong-day-xmobile-p106wd-avatar-1-600x600 (1).jpg,/uploads/photos/1/Product/PhuKien/sac-du-phong-10000mah-khong-day-xmobile-p106wd-avatar-1-600x600.jpg,/uploads/photos/1/Product/PhuKien/sac-du-phong-polymer-10000mah-type-c-p66d-xam-avatar-1-600x600 (1).jpg,/uploads/photos/1/Product/PhuKien/sac-du-phong-polymer-10000mah-type-c-p66d-xam-avatar-1-600x600.jpg,/uploads/photos/1/Product/PhuKien/tai-nghe-chup-tai-kanen-ip-350-avatar-1-600x600.jpg,/uploads/photos/1/Product/PhuKien/tai-nghe-chup-tai-gaming-mozardx-ds902-71-den-avatar-1-600x600.jpg';
         return [
-            'name' => $this->faker->randomElement($phones),
+            'name' => $this->faker->randomElement($accessories),
             'manufacturer' => $this->faker->randomElement(['Lenovo', 'Samsung', 'Acer', 'Asus']),
-            'price' => $this->faker->numberBetween(25000000, 30000000),
-            'price_sale' => $this->faker->numberBetween(20000000, 24900000),
-            'status' => $this->faker->boolean(),
+            'price' => $this->faker->numberBetween(250000, 500000),
+            'price_sale' => $this->faker->numberBetween(150000, 249000),
+            'status' => $this->faker->boolean(100),
             'content' => $content,
             'detail' => $detail,
-            'thumbnail' => $this->faker->randomElement(explode(',', $thumbnailPhone)),
+            'thumbnail' => $this->faker->randomElement(explode(',', $thumbnailPK)),
             'img_list' => $this->faker->imageUrl(),
             'count_in_sock' => $this->faker->randomDigit(),
             'rate' => $this->faker->randomDigit(),
             'count' => $this->faker->randomDigit(),
-            'category_id' => 2
+            'category_id' => 3
             // 'category_id' => Category::all()->random()->id
         ];
     }

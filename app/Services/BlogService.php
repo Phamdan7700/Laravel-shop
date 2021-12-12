@@ -42,4 +42,9 @@ class BlogService
         $post = $this->findById($id);
         $post->delete();
     }
+
+    public function getRelativePost($id)
+    {
+        return Post::where('id', '<>', $id)->take(10)->get();
+    }
 }

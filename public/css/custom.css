@@ -1,7 +1,36 @@
 table {
     background-color: #fff;
 }
-table  thead {
+table thead {
     background-color: #36304a !important;
     color: #fff;
 }
+
+.sb-topnav {
+    background: linear-gradient(to right,  #00040a, #4286f4);
+}
+.sb-sidenav {
+    background:
+        url("/img/road-6724201_1280.jpg") no-repeat left 100% / cover;
+    color: #fff !important;
+}
+.sb-sidenav .nav * {
+    color: #fff !important;
+}
+.sb-sidenav-menu .nav-link {
+    margin: 5px 8px;
+    border-radius: 5px;
+}
+
+.sb-sidenav-menu .nav-link.active {
+    background-color: #0c9fd49d;
+}
+
+.sb-sidenav-menu .nav-link:active {
+    background-color: #0c9fd49d !important ;
+}
+.sb-sidenav-menu .nav-link:hover:not(.active) {
+    background-color: #ffffff41;
+    transition: background-color 0.3s linear;
+}
+

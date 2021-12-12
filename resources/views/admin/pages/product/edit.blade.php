@@ -50,10 +50,19 @@
 
                         <div class="form-group mb-3">
                             <label for="img_list" class="form-label">Hình ảnh</label>
-                            <input type="text" name="img_list" value="{{ old('img_list') }}" class="form-control">
+                            <div class="input-group">
+                                <a id="" data-input="img_list" data-preview="img_list_preview" class="btn btn-primary lfm">
+                                    <i class="fas fa-image"></i> Chọn tệp
+                                </a>
+                                <input type="text" name="img_list" id="img_list" value="{{ $product->img_list }}" class="form-control">
+                                @error('img_list')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                             @error('img_list')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
+                            <div id="img_list_preview" style="margin-top:15px"></div>
                         </div>
 
                         <div class="form-check form-switch mt-3">

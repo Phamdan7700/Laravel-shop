@@ -13,8 +13,8 @@
         }
 
         .img-thumbnail {
-            max-height: 50px;
-            max-width: max-content;
+            /* max-height: 50px; */
+            max-width: 100px !important;
         }
 
         .content-col {
@@ -41,6 +41,7 @@
                 <th scope="col" class="text-nowrap">Thumbnail</th>
                 <th scope="col" class="text-nowrap">Status</th>
                 <th scope="col" class="text-nowrap">Lượt xem</th>
+                <th scope="col" class="text-nowrap">Ngày đăng</th>
                 <th scope="col" class="text-nowrap">Hành động</th>
                 </tr>
             </thead>
@@ -62,6 +63,7 @@
                             </a>
                         </td>
                         <td>{{ $blog->view }}</td>
+                        <td>{{ $blog->created_at->format('d-m-Y') }}</td>
                         <td class="text-nowrap">
                             <a href="{{ route('admin.blog.edit', $blog->id) }}" class="edit btn btn-primary "><i
                                     class="fas fa-edit"></i></a>

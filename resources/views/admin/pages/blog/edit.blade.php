@@ -46,7 +46,7 @@
                         <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
                             <i class="fas fa-image"></i> Chọn tệp
                         </a>
-                        <input type="text" name="thumbnail" id="thumbnail"
+                        <input type="text" value="{{ $blog->thumbnail }}" name="thumbnail" id="thumbnail"
                             class="form-control">
                     </div>
                     @error('thumbnail')

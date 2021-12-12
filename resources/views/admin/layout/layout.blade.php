@@ -27,9 +27,9 @@
 </head>
 
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="{{ route('admin.index') }}">DashBoard</a>
+        <a class="navbar-brand ps-3 z-30 position-relative" href="{{ route('admin.index') }}">DashBoard</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -45,7 +45,7 @@
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    aria-expanded="false"><i class="fas fa-user fa-fw"></i>{{ auth()->user()->name }}</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#!">Settings</a></li>
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
@@ -59,16 +59,13 @@
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <nav class="sb-sidenav accordion sb-sidenav-dark z-20 position-relative" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="{{ route('admin.index') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
-                        </a>
                         @foreach (config('menu') as $menu)
-                            <a class="nav-link" href="{{ route($menu['link']) }}">
+                            <a class="nav-link {{ request()->routeIs($menu['router']) ? 'active' : '' }}"
+                                href="{{ route($menu['link']) }}">
                                 <div class="sb-nav-link-icon"><i class="fas {{ $menu['icon'] }}"></i></div>
                                 {{ $menu['title'] }}
                             </a>
@@ -76,10 +73,6 @@
 
 
                     </div>
-                </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                    {{ auth()->user()->name }}
                 </div>
             </nav>
         </div>
@@ -180,10 +173,12 @@
                 height: 200
             })
 
-            $('#lfm, .lfm').filemanager('image', {prefix: '/laravel-filemanager'});
+            $('#lfm, .lfm').filemanager('image', {
+                prefix: '/laravel-filemanager'
+            });
         });
     </script>
-     <script src="{{ asset('vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
+    <script src="{{ asset('vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
 
     @yield('js')
 </body>

@@ -1,5 +1,5 @@
 @extends('admin.layout.layout')
-@section('title', 'Danh mục')
+@section('title', 'Users')
 
 @section('css')
     <style>
@@ -14,42 +14,31 @@
     </style>
 @endsection
 @section('content')
-    <h1 class="mt-4">Danh mục</h1>
+    <h1 class="mt-4">User</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Danh mục</li>
+        <li class="breadcrumb-item active">User</li>
     </ol>
-    <div><a class="btn btn-success" href="{{ route('admin.category.create') }}">Tạo mới</a></div>
+    {{-- <div><a class="btn btn-success" href="{{ route('admin.user.create') }}">Tạo mới</a></div> --}}
     <div class="container">
         <table id="table_id" class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col" class="text-nowrap">#</th>
-                    <th scope="col" class="text-nowrap">Danh mục</th>
-                    <th scope="col" class="text-nowrap">Tổng sản phẩm</th>
-                    <th scope="col" class="text-nowrap">Trạng thái</th>
-                    <th scope="col" class="text-nowrap">Thứ tự</th>
+                    <th scope="col" class="text-nowrap">Name</th>
+                    <th scope="col" class="text-nowrap">Email</th>
                     <th scope="col" class="text-nowrap">Ngày tạo</th>
                     <th scope="col" class="text-nowrap">Hành động</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($categoryList as $category)
+                @foreach ($userList as $user)
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $category->title }}</td>
-                        <td>{{ $category->products->count() }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->created_at->format('d-m-Y') }}</td>
                         <td>
-                            <a href="{{ route('admin.category.changeStatus', $category->id) }}"
-                                class="btn {{ $category->status ? 'btn-success' : 'btn-warning' }} rounded-pill status">
-                                {{ $category->status ? 'Active' : 'Disable' }}
-                            </a>
-                        </td>
-                        <td>{{ $category->position }}</td>
-                        <td>{{ $category->created_at->format('d-m-Y') }}</td>
-                        <td>
-                            <a href="{{ route('admin.category.edit', $category->id) }}" class="edit btn btn-primary"><i
-                                    class="fas fa-edit"></i></a>
-                            <a href="{{ route('admin.category.destroy', $category->id) }}" class="delete btn btn-danger"><i
+                            <a href="{{ route('admin.user.destroy', $user->id) }}" class="delete btn btn-danger"><i
                                     class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
@@ -57,7 +46,7 @@
 
             </tbody>
         </table>
-        <div>{{ $categoryList->links() }}</div>
+        <div>{{ $userList->links() }}</div>
     </div>
     <form action="" method="post">
         @csrf
@@ -90,7 +79,7 @@
             $('#table_id').DataTable({
                 paging: false,
                 info: false
-                });
+            });
 
             $('.status').click(function(e) {
                 e.preventDefault();

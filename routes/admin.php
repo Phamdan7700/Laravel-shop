@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\UserController;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,9 @@ Route::prefix('admin')->group(function () {
 
         /* Order */
         Route::resource('/order', OrderController::class);
+
+        /* User */
+        Route::resource('/user', UserController::class);
 
         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 

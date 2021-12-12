@@ -44,10 +44,43 @@ class ProductController extends Controller
         return new ProductResource($product);
     }
 
-    public function productsByCategory($slug)
+    public function productsByCategory(Request $request, $slug)
     {
+        $search = $request->input('search');
+        $sort = $request->input('sort');
+        $rating = $request->input('rating');
+        $topSale = $request->input('sale');
+        $new = $request->input('new');
+
+
         $category = $this->categoryService->findBySlug($slug);
-        $products = $category->products()->paginate(16);
+        $queryProducts = $category->products()->active();
+        if ($search) {
+            $queryProducts = $queryProducts->where(function ($query) use ($search) {
+                $query->where('name', 'like', "%$search%")
+                    ->orWhere('manufacturer', 'like', "%$search%")
+                    ->orWhere('price', 'like', "%$search%")
+                    ->orWhere('price_sale', 'like', "%$search%");
+            });
+        }
+
+        if ($topSale) {
+            $queryProducts = $queryProducts->reorder()->orderByDesc('price_sale');
+        }
+
+        if ($rating) {
+            $queryProducts = $queryProducts->reorder()->orderByDesc('rate');
+        }
+
+        if ($sort) {
+            $queryProducts = $queryProducts->reorder()->orderBy('price', $sort);
+        }
+
+        if ($new) {
+            $queryProducts = $queryProducts->reorder()->latest();
+        }
+
+        $products = $queryProducts->paginate(16);
         return ProductResource::collection($products);
     }
 }

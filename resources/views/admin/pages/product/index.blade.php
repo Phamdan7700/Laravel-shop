@@ -13,7 +13,7 @@
         }
 
         .img-thumbnail {
-            max-height: 50px;
+            max-width: 100px;
         }
 
     </style>
@@ -30,15 +30,15 @@
         <table id="table_id" class="display table table-hover table-striped ">
             <thead class="sticky top-14">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Tên sản phẩm</th>
-                    <th scope="col">Hình ảnh</th>
-                    <th scope="col">Danh mục</th>
-                    <th scope="col">Giá</th>
-                    <th scope="col">Khuyến mãi</th>
-                    <th scope="col">Trạng thái</th>
-                    <th scope="col">Tồn kho</th>
-                    <th scope="col">Hành động</th>
+                    <th scope="col" class="text-nowrap">#</th>
+                    <th scope="col" class="text-nowrap">Tên sản phẩm</th>
+                    <th scope="col" class="text-nowrap">Hình ảnh</th>
+                    <th scope="col" class="text-nowrap">Danh mục</th>
+                    <th scope="col" class="text-nowrap">Giá</th>
+                    <th scope="col" class="text-nowrap">Khuyến mãi</th>
+                    <th scope="col" class="text-nowrap">Trạng thái</th>
+                    <th scope="col" class="text-nowrap">Tồn kho</th>
+                    <th scope="col" class="text-nowrap">Hành động</th>
                 </tr>
             </thead>
             <tbody>

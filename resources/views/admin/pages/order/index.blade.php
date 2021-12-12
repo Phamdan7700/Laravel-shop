@@ -13,12 +13,15 @@
         }
 
         .img-thumbnail {
-            max-height: 50px;
-            max-width: max-content;
+            max-width: 100px;
         }
 
         .border-left {
-            border-left: 5px solid orangered;
+            /* border-left: 4px solid rgb(89, 0, 255); */
+        }
+        .bg-warning {
+            background-color: orangered !important;
+            color: white
         }
 
     </style>
@@ -34,9 +37,10 @@
                 <tr>
                     <th scope="col" class="text-nowrap">#</th>
                     <th scope="col" class="text-nowrap">Order ID</th>
-                    <th scope="col" class="text-nowrap">Customer</th>
-                    <th scope="col" class="text-nowrap">Total Price</th>
-                    <th scope="col" class="text-nowrap">Status</th>
+                    <th scope="col" class="text-nowrap">Khách hàng</th>
+                    <th scope="col" class="text-nowrap">Tổng tiền</th>
+                    <th scope="col" class="text-nowrap">Trạng thái</th>
+                    <th scope="col" class="text-nowrap">Ngày đặt hàng</th>
                     <th scope="col" class="text-nowrap">Hành động</th>
                 </tr>
             </thead>
@@ -47,7 +51,8 @@
                         <th scope="row">#{{ $order->id }}</th>
                         <td scope="row">{{ $order->user->name }}</td>
                         <td scope="row">{{ number_format($order->total_price) }} đ</td>
-                        <td>Đặt mới</td>
+                        <td class="text-nowrap">Đặt mới</td>
+                        <td class="text-nowrap">{{ $order->created_at->format('H:m:s d/m/Y')}}</td>
                         <td class="text-nowrap">
                             <button type="button" class="action-detail btn btn-primary" data-order-id="{{ $order->id }}"
                                 data-bs-toggle="modal" data-bs-target="#thumbnail">

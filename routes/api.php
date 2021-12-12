@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\HomepageController;
 use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SliderController;
@@ -24,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/order', [OrderController::class, 'handleOrder']);
 });
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -44,3 +47,15 @@ Route::get('/category/{id}/products', [ProductController::class, 'productsByCate
 /* Blog */
 Route::get('posts', [BlogController::class, 'index']);
 Route::get('post/{id}', [BlogController::class, 'show']);
+Route::get('post/getRelativePost/{id}', [BlogController::class, 'getRelativePost']);
+
+
+//get Provices
+Route::get('provinces', [AddressController::class, 'getProvinces']);
+Route::get('province/{id}/districts', [AddressController::class, 'getDistricts']);
+Route::get('province/{id}/wards', [AddressController::class, 'getWards']);
+
+
+//
+Route::post('forgot-password', [AuthController::class, 'forgotPassword']);
+Route::post('reset-password', [AuthController::class, 'resetPassword']);

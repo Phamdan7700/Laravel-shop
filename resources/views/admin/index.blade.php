@@ -93,7 +93,7 @@ $progress = ['l-bg-cyan', 'l-bg-green', 'l-bg-orange', 'l-bg-cyan'];
                         <div class="row align-items-center mb-2 d-flex">
                             <div class="col-8">
                                 <h2 class="d-flex align-items-center mb-0">
-                                    $11.61k
+                                   {{ $total[$item['subject']] .' '. Str::ucfirst($item['subject']) }}
                                 </h2>
                             </div>
                             <div class="col-4 text-right">
